@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 0 730 470">
+  <!-- เงาใต้รถ -->
+  <ellipse cx="390" cy="440" rx="335" ry="16" fill="#1c1f4a" opacity="0.6"/>
+  <!-- ไฟหน้า (แสง) -->
+  <polygon points="680,262 752,234 752,312 680,286" fill="#7b7c92"/>
+  <!-- เสาหลังคา -->
+  <rect x="105" y="100" width="15" height="95" fill="#232a57"/>
+  <rect x="313" y="100" width="15" height="95" fill="#232a57"/>
+  <!-- เบาะ -->
+  <rect x="120" y="110" width="192" height="36" rx="14" fill="#ff8a3d"/>
+  <rect x="120" y="141" width="192" height="46" rx="14" fill="#f4b340"/>
+  <!-- กระจกหน้า -->
+  <line x1="528" y1="100" x2="592" y2="218" stroke="#a9d3e6" stroke-width="14"/>
+  <!-- พวงมาลัย -->
+  <circle cx="533" cy="125" r="8" fill="#f6923f"/>
+  <circle cx="535" cy="145" r="8" fill="#ffffff"/>
+  <circle cx="536" cy="165" r="8" fill="#f6923f"/>
+  <circle cx="538" cy="185" r="8" fill="#ffffff"/>
+  <!-- หลังคา -->
+  <path d="M82 60 H515 Q558 62 568 84 L572 98 Q566 108 520 108 H80 Q62 108 62 92 V78 Q62 60 82 60 Z" fill="#f6c63c"/>
+  <rect x="78" y="97" width="432" height="10" fill="#e8334a"/>
+  <g fill="#e8334a">
+    <circle cx="105" cy="78" r="5.5"/><circle cx="163" cy="78" r="5.5"/><circle cx="220" cy="78" r="5.5"/><circle cx="278" cy="78" r="5.5"/>
+    <circle cx="335" cy="78" r="5.5"/><circle cx="392" cy="78" r="5.5"/><circle cx="450" cy="78" r="5.5"/><circle cx="500" cy="78" r="5.5"/>
+  </g>
+  <!-- ตัวรถ -->
+  <path d="M100 182 H560 Q572 182 582 192 L640 240 Q682 250 682 284 V322 H85 V198 Q85 182 100 182 Z" fill="#e8334a"/>
+  <rect x="392" y="157" width="86" height="28" rx="12" fill="#ff8a3d"/>
+  <path d="M583 215 Q598 188 612 182 L638 178" stroke="#232a57" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <!-- ป้ายทะเบียน -->
+  <rect x="95" y="230" width="70" height="28" rx="5" fill="#ffffff"/>
+  <rect x="101" y="236" width="58" height="16" rx="3" fill="none" stroke="#232a57" stroke-width="3"/>
+  <!-- แถบเหลือง -->
+  <rect x="85" y="305" width="598" height="17" fill="#f6c63c"/>
+  <!-- ขอบซุ้มล้อ -->
+  <path d="M100 358 A90 90 0 0 1 280 358" stroke="#f6c63c" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M510 358 A90 90 0 0 1 690 358" stroke="#f6c63c" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <!-- ไฟหน้า -->
+  <circle cx="663" cy="273" r="19" fill="#f6c63c"/>
+  <circle cx="663" cy="273" r="12" fill="#fff3b0"/>
+</svg>
