@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ตุ๊กๆ ตะลอนกิน</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=Anuphan:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="day">
+
+  <div class="header">
+    <div class="logo">ตุ๊กๆ ตะลอนกิน</div>
+    <div class="menu-bar">
+      <a href="#street">ถนน</a>
+      <a href="#gallery">แกลเลอรี</a>
+    </div>
+  </div>
+  <div class="zigzag"></div>
+
+  <div class="container" id="street">
+
+    <p class="now">ตอนนี้อยู่ที่ <b id="placeName">ถนนหลัก (กลางวัน)</b></p>
+    <h1>ขับตุ๊กๆ ไปกิน <span class="red">สตรีทฟู้ดกรุงเทพฯ</span></h1>
+    <p class="text">ลากรถตุ๊กๆ บนถนนเพื่อเปลี่ยนที่ แล้วกดที่ร้านเพื่อดูเมนูอาหาร</p>
+
+
+    <div class="scene">
+      <img src="images/thai-culture.jpg" class="bg" id="bgDay" alt="ถนนหลัก">
+      <img src="images/yaowarat.jpg" class="bg" id="bgNight" alt="เยาวราช">
+
+      <div class="shops" id="shopsDay">
+      <div class="shop" style="left:0.6%; top:59%; width:6.3%; height:22%;" onclick="openShop('padthai')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:7.5%; top:63%; width:6.2%; height:18%;" onclick="openShop('jayfai')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:14.3%; top:59%; width:6.2%; height:22%;" onclick="openShop('chicken')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:21.1%; top:63%; width:6.3%; height:18%;" onclick="openShop('wattana')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:72.6%; top:63%; width:6.3%; height:18%;" onclick="openShop('kuayjab')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:79.4%; top:59%; width:6.3%; height:22%;" onclick="openShop('hoymong')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:86.3%; top:63%; width:6.3%; height:18%;" onclick="openShop('tk')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:93.1%; top:59%; width:6.3%; height:22%;" onclick="openShop('mango')">
+        <span class="pin">เมนู</span>
+      </div>
+      </div>
+
+      <div class="shops hide" id="shopsNight">
+      <div class="shop" style="left:1.6%; top:56%; width:14.1%; height:41%;" onclick="openShop('oysternight')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:16.2%; top:51%; width:6%; height:26%;" onclick="openShop('dimsum')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:30.3%; top:51%; width:6.8%; height:26%;" onclick="openShop('soymilk')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:62.9%; top:51%; width:6.6%; height:26%;" onclick="openShop('tk')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:70.3%; top:51%; width:6.8%; height:26%;" onclick="openShop('khaotom')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:77.8%; top:51%; width:6%; height:26%;" onclick="openShop('birdnest')">
+        <span class="pin">เมนู</span>
+      </div>
+      <div class="shop" style="left:84.2%; top:56%; width:14%; height:41%;" onclick="openShop('chestnut')">
+        <span class="pin">เมนู</span>
+      </div>
+      </div>
+    </div>
+
+    <div class="road" id="road">
+      <div class="road-line" id="roadLine"></div>
+      <button class="stop stop-day" onclick="goTo(0)">ถนนหลัก</button>
+      <button class="stop stop-night" onclick="goTo(1)">เยาวราช</button>
+      <p class="road-hint" id="hint">ลากตุ๊กๆ ไปทางขวาเพื่อไปเยาวราช →</p>
+
+      <div class="tuktuk" id="tuktuk">
+        <img src="images/tuktuk.svg" class="tuk-body" alt="รถตุ๊กๆ" draggable="false">
+        <span class="tuk-text">TUK TUK</span>
+        <img src="images/wheel.svg" class="wheel wheel-back" id="wheel1" alt="" draggable="false">
+        <img src="images/wheel.svg" class="wheel wheel-front" id="wheel2" alt="" draggable="false">
+      </div>
+    </div>
+
+    <p class="small-title">ร้านในย่านนี้ (กดเพื่อดูเมนู)</p>
+    <div class="chips" id="chipsDay">
+      <button class="chip" onclick="openShop('padthai')">ผัดไทยประตูผี</button>
+      <button class="chip" onclick="openShop('jayfai')">เจ๊ไฝ</button>
+      <button class="chip" onclick="openShop('chicken')">ข้าวมันไก่ประตูน้ำ</button>
+      <button class="chip" onclick="openShop('wattana')">วัฒนาพานิช</button>
+      <button class="chip" onclick="openShop('kuayjab')">ก๋วยจั๊บนายเอ็ก</button>
+      <button class="chip" onclick="openShop('hoymong')">หอยทอดนายหมง</button>
+      <button class="chip" onclick="openShop('tk')">T&K Seafood</button>
+      <button class="chip" onclick="openShop('mango')">มะม่วง แม่วริน</button>
+    </div>
+    <div class="chips hide" id="chipsNight">
+      <button class="chip" onclick="openShop('oysternight')">หอยทอดรถเข็น</button>
+      <button class="chip" onclick="openShop('dimsum')">ติ่มซำ ขนมจีบ</button>
+      <button class="chip" onclick="openShop('soymilk')">น้ำเต้าหู้</button>
+      <button class="chip" onclick="openShop('tk')">T&K Seafood</button>
+      <button class="chip" onclick="openShop('khaotom')">ข้าวต้มปลา</button>
+      <button class="chip" onclick="openShop('birdnest')">รังนก</button>
+      <button class="chip" onclick="openShop('chestnut')">เกาลัดคั่ว</button>
+    </div>
+  </div>
+
+  <div class="container gallery" id="gallery">
+    <p class="small-title">PHOTO GALLERY</p>
+    <h2>แกลเลอรีอาหาร</h2>
+
+    <div class="filter">
+      <button class="filter-btn active" id="btnAll" onclick="showGallery('all')">ทั้งหมด</button>
+      <button class="filter-btn" id="btnDay" onclick="showGallery('day')">ถนนหลัก</button>
+      <button class="filter-btn" id="btnNight" onclick="showGallery('night')">เยาวราช</button>
+    </div>
+
+    <div class="photos" id="photos">
+      <div class="photo day" onclick="showFood('padthai', 0)">
+        <img src="images/food/padthai-egg.svg" alt="ผัดไทยห่อไข่">
+        <p class="photo-name">ผัดไทยห่อไข่</p>
+        <p class="photo-shop">ผัดไทยประตูผี</p>
+      </div>
+      <div class="photo day" onclick="showFood('padthai', 1)">
+        <img src="images/food/padthai-shrimp.svg" alt="ผัดไทยกุ้งสด">
+        <p class="photo-name">ผัดไทยกุ้งสด</p>
+        <p class="photo-shop">ผัดไทยประตูผี</p>
+      </div>
+      <div class="photo day" onclick="showFood('padthai', 2)">
+        <img src="images/food/orange-juice.svg" alt="น้ำส้มคั้น">
+        <p class="photo-name">น้ำส้มคั้น</p>
+        <p class="photo-shop">ผัดไทยประตูผี</p>
+      </div>
+      <div class="photo day" onclick="showFood('jayfai', 0)">
+        <img src="images/food/crab-omelette.svg" alt="ไข่เจียวปู">
+        <p class="photo-name">ไข่เจียวปู</p>
+        <p class="photo-shop">เจ๊ไฝ</p>
+      </div>
+      <div class="photo day" onclick="showFood('jayfai', 1)">
+        <img src="images/food/drunken-noodles.svg" alt="ผัดขี้เมาทะเล">
+        <p class="photo-name">ผัดขี้เมาทะเล</p>
+        <p class="photo-shop">เจ๊ไฝ</p>
+      </div>
+      <div class="photo day" onclick="showFood('jayfai', 2)">
+        <img src="images/food/tom-yum.svg" alt="ต้มยำกุ้งน้ำข้น">
+        <p class="photo-name">ต้มยำกุ้งน้ำข้น</p>
+        <p class="photo-shop">เจ๊ไฝ</p>
+      </div>
+      <div class="photo day" onclick="showFood('chicken', 0)">
+        <img src="images/food/chicken-rice.svg" alt="ข้าวมันไก่ต้ม">
+        <p class="photo-name">ข้าวมันไก่ต้ม</p>
+        <p class="photo-shop">ข้าวมันไก่ประตูน้ำ</p>
+      </div>
+      <div class="photo day" onclick="showFood('chicken', 1)">
+        <img src="images/food/fried-chicken-rice.svg" alt="ข้าวมันไก่ทอด">
+        <p class="photo-name">ข้าวมันไก่ทอด</p>
+        <p class="photo-shop">ข้าวมันไก่ประตูน้ำ</p>
+      </div>
+      <div class="photo day" onclick="showFood('chicken', 2)">
+        <img src="images/food/melon-soup.svg" alt="น้ำซุปฟัก">
+        <p class="photo-name">น้ำซุปฟัก</p>
+        <p class="photo-shop">ข้าวมันไก่ประตูน้ำ</p>
+      </div>
+      <div class="photo day" onclick="showFood('wattana', 0)">
+        <img src="images/food/beef-noodle.svg" alt="ก๋วยเตี๋ยวเนื้อตุ๋น">
+        <p class="photo-name">ก๋วยเตี๋ยวเนื้อตุ๋น</p>
+        <p class="photo-shop">วัฒนาพานิช</p>
+      </div>
+      <div class="photo day" onclick="showFood('wattana', 1)">
+        <img src="images/food/beef-meatball.svg" alt="เนื้อเปื่อยลูกชิ้น">
+        <p class="photo-name">เนื้อเปื่อยลูกชิ้น</p>
+        <p class="photo-shop">วัฒนาพานิช</p>
+      </div>
+      <div class="photo day" onclick="showFood('kuayjab', 0)">
+        <img src="images/food/kuay-jab.svg" alt="ก๋วยจั๊บน้ำข้น">
+        <p class="photo-name">ก๋วยจั๊บน้ำข้น</p>
+        <p class="photo-shop">ก๋วยจั๊บนายเอ็ก</p>
+      </div>
+      <div class="photo day" onclick="showFood('kuayjab', 1)">
+        <img src="images/food/kuay-jab-crispy-pork.svg" alt="ก๋วยจั๊บหมูกรอบ">
+        <p class="photo-name">ก๋วยจั๊บหมูกรอบ</p>
+        <p class="photo-shop">ก๋วยจั๊บนายเอ็ก</p>
+      </div>
+      <div class="photo day" onclick="showFood('hoymong', 0)">
+        <img src="images/food/hoy-tod.svg" alt="หอยทอดกรอบ">
+        <p class="photo-name">หอยทอดกรอบ</p>
+        <p class="photo-shop">หอยทอดนายหมง</p>
+      </div>
+      <div class="photo day" onclick="showFood('hoymong', 1)">
+        <img src="images/food/or-suan.svg" alt="ออส่วน">
+        <p class="photo-name">ออส่วน</p>
+        <p class="photo-shop">หอยทอดนายหมง</p>
+      </div>
+      <div class="photo day night" onclick="showFood('tk', 0)">
+        <img src="images/food/grilled-shrimp.svg" alt="กุ้งเผา">
+        <p class="photo-name">กุ้งเผา</p>
+        <p class="photo-shop">T&K Seafood</p>
+      </div>
+      <div class="photo day night" onclick="showFood('tk', 1)">
+        <img src="images/food/curry-crab.svg" alt="ปูผัดผงกะหรี่">
+        <p class="photo-name">ปูผัดผงกะหรี่</p>
+        <p class="photo-shop">T&K Seafood</p>
+      </div>
+      <div class="photo day" onclick="showFood('mango', 0)">
+        <img src="images/food/mango-sticky-rice.svg" alt="ข้าวเหนียวมะม่วง">
+        <p class="photo-name">ข้าวเหนียวมะม่วง</p>
+        <p class="photo-shop">มะม่วง แม่วริน</p>
+      </div>
+      <div class="photo day" onclick="showFood('mango', 1)">
+        <img src="images/food/blue-sticky-rice.svg" alt="ข้าวเหนียวอัญชัน">
+        <p class="photo-name">ข้าวเหนียวอัญชัน</p>
+        <p class="photo-shop">มะม่วง แม่วริน</p>
+      </div>
+      <div class="photo night" onclick="showFood('oysternight', 0)">
+        <img src="images/food/hoy-tod-night.svg" alt="หอยทอดกรอบ">
+        <p class="photo-name">หอยทอดกรอบ</p>
+        <p class="photo-shop">หอยทอดรถเข็น</p>
+      </div>
+      <div class="photo night" onclick="showFood('oysternight', 1)">
+        <img src="images/food/or-suan-night.svg" alt="ออส่วนหอยนางรม">
+        <p class="photo-name">ออส่วนหอยนางรม</p>
+        <p class="photo-shop">หอยทอดรถเข็น</p>
+      </div>
+      <div class="photo night" onclick="showFood('dimsum', 0)">
+        <img src="images/food/shumai.svg" alt="ขนมจีบหมูกุ้ง">
+        <p class="photo-name">ขนมจีบหมูกุ้ง</p>
+        <p class="photo-shop">ติ่มซำ ขนมจีบ</p>
+      </div>
+      <div class="photo night" onclick="showFood('dimsum', 1)">
+        <img src="images/food/har-gow.svg" alt="ฮะเก๋า">
+        <p class="photo-name">ฮะเก๋า</p>
+        <p class="photo-shop">ติ่มซำ ขนมจีบ</p>
+      </div>
+      <div class="photo night" onclick="showFood('dimsum', 2)">
+        <img src="images/food/bbq-pork-bun.svg" alt="ซาลาเปาหมูแดง">
+        <p class="photo-name">ซาลาเปาหมูแดง</p>
+        <p class="photo-shop">ติ่มซำ ขนมจีบ</p>
+      </div>
+      <div class="photo night" onclick="showFood('dimsum', 3)">
+        <img src="images/food/custard-bun.svg" alt="ซาลาเปาไส้ครีม">
+        <p class="photo-name">ซาลาเปาไส้ครีม</p>
+        <p class="photo-shop">ติ่มซำ ขนมจีบ</p>
+      </div>
+      <div class="photo night" onclick="showFood('soymilk', 0)">
+        <img src="images/food/soy-milk.svg" alt="น้ำเต้าหู้ทรงเครื่อง">
+        <p class="photo-name">น้ำเต้าหู้ทรงเครื่อง</p>
+        <p class="photo-shop">น้ำเต้าหู้</p>
+      </div>
+      <div class="photo night" onclick="showFood('soymilk', 1)">
+        <img src="images/food/tofu-ginger.svg" alt="เต้าฮวยน้ำขิง">
+        <p class="photo-name">เต้าฮวยน้ำขิง</p>
+        <p class="photo-shop">น้ำเต้าหู้</p>
+      </div>
+      <div class="photo night" onclick="showFood('soymilk', 2)">
+        <img src="images/food/patongko.svg" alt="ปาท่องโก๋">
+        <p class="photo-name">ปาท่องโก๋</p>
+        <p class="photo-shop">น้ำเต้าหู้</p>
+      </div>
+      <div class="photo night" onclick="showFood('khaotom', 0)">
+        <img src="images/food/fish-rice-soup.svg" alt="ข้าวต้มปลากะพง">
+        <p class="photo-name">ข้าวต้มปลากะพง</p>
+        <p class="photo-shop">ข้าวต้มปลา</p>
+      </div>
+      <div class="photo night" onclick="showFood('khaotom', 1)">
+        <img src="images/food/shrimp-rice-soup.svg" alt="ข้าวต้มกุ้ง">
+        <p class="photo-name">ข้าวต้มกุ้ง</p>
+        <p class="photo-shop">ข้าวต้มปลา</p>
+      </div>
+      <div class="photo night" onclick="showFood('birdnest', 0)">
+        <img src="images/food/birdnest-hot.svg" alt="รังนกน้ำแดงร้อน">
+        <p class="photo-name">รังนกน้ำแดงร้อน</p>
+        <p class="photo-shop">รังนก</p>
+      </div>
+      <div class="photo night" onclick="showFood('birdnest', 1)">
+        <img src="images/food/birdnest-cold.svg" alt="รังนกเย็น">
+        <p class="photo-name">รังนกเย็น</p>
+        <p class="photo-shop">รังนก</p>
+      </div>
+      <div class="photo night" onclick="showFood('chestnut', 0)">
+        <img src="images/food/chestnuts.svg" alt="เกาลัดคั่ว">
+        <p class="photo-name">เกาลัดคั่ว</p>
+        <p class="photo-shop">เกาลัดคั่ว</p>
+      </div>
+      <div class="photo night" onclick="showFood('chestnut', 1)">
+        <img src="images/food/ginkgo.svg" alt="แปะก๊วยน้ำตาล">
+        <p class="photo-name">แปะก๊วยน้ำตาล</p>
+        <p class="photo-shop">เกาลัดคั่ว</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">ภาพอาหารทั้งหมดเป็นภาพเวกเตอร์ที่วาดขึ้นใหม่</div>
+
+  <div class="popup-bg hide" id="popup" onclick="clickOutside(event)">
+    <div class="popup">
+      <div class="awning"></div>
+      <button class="close" onclick="closePopup()">X</button>
+      <div id="popupContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
